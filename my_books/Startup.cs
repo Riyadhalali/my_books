@@ -42,6 +42,14 @@ namespace my_books
             //-> config the servies for book model 
             services.AddTransient<BooksServices>();
 
+            //-> config the services for the Author model 
+            services.AddTransient<AuthorsService>();
+
+            //-> config the services for the publisher model 
+            services.AddTransient<PublishersService>();
+
+
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v2", new OpenApiInfo { Title = "my_books", Version = "v2" });
@@ -70,7 +78,7 @@ namespace my_books
             });
 
             //-> add AppDbintiler
-            AppDbInitialzer.Seed(app); 
+          //  AppDbInitialzer.Seed(app); 
 
         }
     }
