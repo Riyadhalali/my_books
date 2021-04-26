@@ -13,6 +13,6 @@ namespace my_books.Data
         {
                 
         }
-        DbSet<Book> Books { get; set; }
+       public DbSet<Book> Books { get; set; }
     }
 }

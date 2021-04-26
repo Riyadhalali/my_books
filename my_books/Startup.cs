@@ -63,6 +63,9 @@ namespace my_books
             {
                 endpoints.MapControllers();
             });
+
+            //-> add AppDbintiler
+            AppDbInitialzer.Seed(app); 
         }
     }
 }
