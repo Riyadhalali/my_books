@@ -31,11 +31,13 @@ namespace my_books.Data.Models
         //Navigation Proberties 
         //Book can have a single publisher 
         public int? PublisherId { get; set; }
-        
+        // to tell entity frame work that is a primary key 
         public Publisher Publisher { get; set; }
 
 
+        // add navigation for book_author
 
+        public List<Book_Author> Book_Authors { get; set; }
 
     }
 }
