@@ -15,6 +15,8 @@ namespace my_books.Data.Services
             _context = context;
         }
 
+
+        //-> Add New Book
         public void AddBook(BookVM book)
         {
             var _book = new Book()
@@ -33,5 +35,24 @@ namespace my_books.Data.Services
             _context.Books.Add(_book);
             _context.SaveChanges();
         }
+
+
+        //-> Return All Bools
+        public List<Book> GetAllBooks()
+        {
+            var allbooks = _context.Books.ToList();
+            return allbooks; 
+        }
+
+        //-> Return Book By ID
+        public Book GetBookById(int bookId)
+        {
+            var allbooks = _context.Books.FirstOrDefault(n => n.Id==bookId);
+            return allbooks;
+        }
+
+
+
+
     }
 }
