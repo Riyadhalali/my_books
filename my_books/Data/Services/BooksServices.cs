@@ -63,6 +63,23 @@ namespace my_books.Data.Services
         }
 
 
+        //-> Return book with Authors Name based on ID
+        public BookWithAuthorVM GetBookAuthorById(int bookId)
+        {
+            var _bookWithAuthors = _context.Books.Where(n => n.Id == bookId).Select(book => new BookWithAuthorVM()
+            {
+                Title = book.Title,
+                Description = book.Description,
+                IsRead = book.IsRead,
+                DateRead = book.IsRead ? book.DateRead.Value : null,
+                Rate = book.IsRead ? book.Rate.Value : null,
+                CoverUrl = book.CoverUrl,
+                Authornames = book.Book_Authors.Select(n => n.Author.FullName).ToList()
+            }).FirstOrDefault();
+            return _bookWithAuthors;
+        }
+
+
         //-> Update Books
         public Book UpdateBookById(int bookId,BookVM book)
         {

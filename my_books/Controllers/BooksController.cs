@@ -45,6 +45,14 @@ namespace my_books.Controllers
             return Ok(book);
         }
 
+        //-> Get Book Author By Id using Relations many yo many 
+        [HttpGet("get-book-author-by-id/{id}")]
+        public IActionResult GetBookAuthorById(int id)
+        {
+            var book = _booksServices.GetBookAuthorById(id);
+            return Ok(book);
+        }
+
 
         //-> update Book By Id
         [HttpPut("updateBookById/{id}")]
