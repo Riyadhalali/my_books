@@ -14,6 +14,6 @@ namespace my_books.Data.Models
 
         //Navigation Properties 
         // The publisher can publish serveral books 
-        public List<Book> Books { get; set; }
+      // public List<Book> Books { get; set; }
     }
 }

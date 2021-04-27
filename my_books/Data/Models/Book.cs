@@ -21,7 +21,7 @@ namespace my_books.Data.Models
 
         public string Genre { get; set; }
 
-        public string Author { get; set; }
+      //  public string Author { get; set; }
 
         public string CoverUrl { get; set; }
 
@@ -30,9 +30,9 @@ namespace my_books.Data.Models
 
         //Navigation Proberties 
         //Book can have a single publisher 
-        public int? PublisherId { get; set; }
-        // to tell entity frame work that is a primary key 
-        public Publisher Publisher { get; set; }
+     ///  public int PublisherId { get; set; }
+        // to tell entity frame work that is a Foreign  key 
+     ///  public Publisher Publisher { get; set; }
 
 
         // add navigation for book_author

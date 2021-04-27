@@ -34,7 +34,7 @@ namespace my_books.Data
                         DateRead=DateTime.Now.AddDays(-10),
                         Rate=4,
                         Genre="Math",
-                        Author="Riyad Al-Ali",
+                       // Author="Riyad Al-Ali",
                         CoverUrl="https...",
                         DateAdded=DateTime.Now
 
@@ -51,7 +51,7 @@ namespace my_books.Data
                         DateRead = DateTime.Now.AddDays(-10),
                         Rate = 4,
                         Genre = "Math",
-                        Author = "Riyad Al-Ali",
+                       // Author = "Riyad Al-Ali",
                         CoverUrl = "https...",
                         DateAdded = DateTime.Now
                     }

@@ -17,7 +17,7 @@ namespace my_books.Data.Services
 
 
         //-> Add New Book
-        public void AddBook(BookVM book)
+        public void AddBookWithAuthors(BookVM book)
         {
             var _book = new Book()
             {
@@ -26,14 +26,25 @@ namespace my_books.Data.Services
                 IsRead = book.IsRead,
                 DateRead = book.IsRead ? book.DateRead.Value : null,
                 Rate = book.IsRead ? book.Rate.Value : null,
-                Author = book.Author,
                 CoverUrl = book.CoverUrl,
-                DateAdded = DateTime.Now
-
+                DateAdded = DateTime.Now,
+                //PublisherId=book.PublisherId
 
             };
             _context.Books.Add(_book);
             _context.SaveChanges();
+
+            //Adding New Data for realtion table book_author
+            foreach (var id in book.AuthorIds)
+            {
+                var _book_author = new Book_Author()
+                {
+                    BookId = _book.Id,
+                    AuthorId = id
+                };
+                _context.Books_Authors.Add(_book_author);
+                _context.SaveChanges();
+            }
         }
 
 
@@ -65,7 +76,7 @@ namespace my_books.Data.Services
                 _book.IsRead = book.IsRead;
                 _book.DateRead = book.IsRead ? book.DateRead.Value : null;
                 _book.Rate = book.IsRead ? book.Rate.Value : null;
-                _book.Author = book.Author;
+               // _book.Author = book.Author;
                 _book.CoverUrl = book.CoverUrl;
                 _context.SaveChanges();
             }

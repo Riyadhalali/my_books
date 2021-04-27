@@ -22,10 +22,10 @@ namespace my_books.Controllers
         }
 
         //-> Post New Book Data to servi
-        [HttpPost("add-book")]
+        [HttpPost("add-book-with-authors")]
         public IActionResult AddBook([FromBody] BookVM book)
         {
-            _booksServices.AddBook(book);
+            _booksServices.AddBookWithAuthors(book);
             return Ok();
         }
 

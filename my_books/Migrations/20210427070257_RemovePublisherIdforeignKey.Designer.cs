@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using my_books.Data;
 
 namespace my_books.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210427070257_RemovePublisherIdforeignKey")]
+    partial class RemovePublisherIdforeignKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,6 +61,9 @@ namespace my_books.Migrations
                     b.Property<bool>("IsRead")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("PublisherId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("Rate")
                         .HasColumnType("int");
 
@@ -66,6 +71,8 @@ namespace my_books.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PublisherId");
 
                     b.ToTable("Books");
                 });
@@ -105,6 +112,15 @@ namespace my_books.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Publishers");
+                });
+
+            modelBuilder.Entity("my_books.Data.Models.Book", b =>
+                {
+                    b.HasOne("my_books.Data.Models.Publisher", "Publisher")
+                        .WithMany()
+                        .HasForeignKey("PublisherId");
+
+                    b.Navigation("Publisher");
                 });
 
             modelBuilder.Entity("my_books.Data.Models.Book_Author", b =>
